@@ -17,3 +17,12 @@ export const Container = styled.main`
     font-size: 1.5rem;
   }
 `;
+
+export const Content = styled.div`
+  width: 100%;
+  margin-top: 2.875rem;
+
+  display: grid;
+  grid-gap: 2.125rem 3rem;
+  grid-template-columns: repeat(3, 1fr);
+`;
