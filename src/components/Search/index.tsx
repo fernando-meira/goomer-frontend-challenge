@@ -17,7 +17,11 @@ export function Search({ backgroundColor }: SearchProps) {
         <span>Buscar estabelecimento</span>
       </S.LabelWrapper>
 
-      <input ref={searchInput} type="text" />
+      <input
+        type="text"
+        ref={searchInput}
+        placeholder="Buscar estabelecimento"
+      />
 
       <button type="button">
         <img src={searchIcon} alt="Magnifying glass" />

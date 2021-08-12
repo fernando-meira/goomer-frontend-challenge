@@ -16,6 +16,14 @@ export const Container = styled.main`
     font-weight: 500;
     font-size: 1.5rem;
   }
+
+  @media (max-width: 1024px) {
+    padding: 0 3.5rem;
+  }
+
+  @media (max-width: 720px) {
+    padding: 0 2.5rem;
+  }
 `;
 
 export const Content = styled.div`
@@ -25,4 +33,12 @@ export const Content = styled.div`
   display: grid;
   grid-gap: 2.125rem 3rem;
   grid-template-columns: repeat(3, 1fr);
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 720px) {
+    grid-template-columns: 1fr;
+  }
 `;

@@ -25,6 +25,10 @@ export const Container = styled.div<ContainerProps>`
     flex: 1;
 
     background-color: transparent;
+
+    ::placeholder {
+      color: transparent;
+    }
   }
 
   > button {
@@ -33,6 +37,26 @@ export const Container = styled.div<ContainerProps>`
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
+
+  @media (max-width: 720px) {
+    > input {
+      padding: 0.5rem 2rem;
+
+      ::placeholder {
+        color: ${colors.gray[700]};
+      }
+    }
+  }
+
+  @media (max-width: 280px) {
+    > button {
+      display: none;
+    }
   }
 `;
 
@@ -54,5 +78,9 @@ export const LabelWrapper = styled.div`
     font-weight: 500;
     white-space: nowrap;
     text-overflow: ellipsis;
+  }
+
+  @media (max-width: 720px) {
+    display: none;
   }
 `;

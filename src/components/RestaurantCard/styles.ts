@@ -17,7 +17,12 @@ export const Container = styled(Link)`
 
   display: flex;
   align-items: center;
+  transition: transform 0.2s;
   background-color: ${colors.white};
+
+  :hover {
+    transform: translateX(0.25rem);
+  }
 `;
 
 export const ImageWrapper = styled.div`
@@ -41,8 +46,15 @@ export const Content = styled.div`
   justify-content: center;
 
   > strong {
+    overflow: hidden;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
     font-size: 1rem;
     font-weight: 500;
+    text-overflow: ellipsis;
   }
 
   > p {
