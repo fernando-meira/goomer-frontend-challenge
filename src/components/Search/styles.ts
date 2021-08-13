@@ -7,8 +7,9 @@ interface ContainerProps {
 }
 
 export const Container = styled.div<ContainerProps>`
-  width: 52.5rem;
+  width: 100%;
   height: 2.5rem;
+  max-width: 52.5rem;
   border-radius: 2.8rem;
   box-shadow: 0px 2px 4px ${colors.gray[900]};
 
