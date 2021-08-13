@@ -12,8 +12,8 @@ export function Accordion() {
   }, [isActive]);
 
   return (
-    <S.Container onClick={handleActive}>
-      <S.AccordionWrapper>
+    <S.Container>
+      <S.AccordionWrapper onClick={handleActive}>
         <p>Accordion</p>
 
         <S.Icon src={chevron} alt="icon-chevron" isActive={isActive} />

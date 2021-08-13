@@ -2,16 +2,16 @@ import styled from 'styled-components';
 
 import { colors } from 'styles/colors';
 
-export const Container = styled.button.attrs(() => {
-  'button';
-})`
+export const Container = styled.div`
   width: 100%;
   height: auto;
 
   background-color: transparent;
 `;
 
-export const AccordionWrapper = styled.div`
+export const AccordionWrapper = styled.button.attrs(() => {
+  'button';
+})`
   width: 100%;
   padding: 0.75rem 2.125rem 0.75rem 0.875rem;
   border-bottom: 1px solid ${colors.gray[700]};

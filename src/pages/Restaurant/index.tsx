@@ -12,7 +12,9 @@ export function Restaurant() {
         <section>
           <Search backgroundColor={colors.gray[300]} />
 
-          <Accordion />
+          <S.Content>
+            <Accordion />
+          </S.Content>
         </section>
 
         <aside />

@@ -20,8 +20,6 @@ export const Container = styled.main`
     grid-template-columns: 51rem auto;
 
     section {
-      /* section style */
-
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -31,4 +29,9 @@ export const Container = styled.main`
       background-color: ${colors.gray[300]};
     }
   }
+`;
+
+export const Content = styled.div`
+  width: 100%;
+  margin-top: 1.5rem;
 `;
