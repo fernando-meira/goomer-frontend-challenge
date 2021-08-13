@@ -12,26 +12,30 @@ export const Container = styled.div`
 export const AccordionWrapper = styled.button.attrs(() => {
   'button';
 })`
-  width: 100%;
+  width: 98%;
+  margin-left: 2%;
   padding: 0.75rem 2.125rem 0.75rem 0.875rem;
   border-bottom: 1px solid ${colors.gray[700]};
 
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  > p {
+    font-weight: 600;
+    text-transform: capitalize;
+  }
 `;
 
 export const Icon = styled.img<{ isActive: boolean }>`
   transition: transform 0.3s;
 
   transform: ${({ isActive }) =>
-    isActive ? 'rotate(-90deg)' : 'rotate(0deg)'};
+    isActive ? 'rotate(0deg)' : 'rotate(-90deg)'};
 `;
 
 export const Content = styled.div<{ isActive?: boolean }>`
   width: 100%;
 
-  background-color: ${colors.gray[900]};
-
-  display: ${({ isActive }) => isActive && 'none'};
+  display: ${({ isActive }) => !isActive && 'none'};
 `;

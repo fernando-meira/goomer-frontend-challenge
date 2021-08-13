@@ -35,3 +35,11 @@ export const Content = styled.div`
   width: 100%;
   margin-top: 1.5rem;
 `;
+
+export const WrapperCards = styled.div`
+  padding: 1.5rem 0;
+
+  display: grid;
+  grid-gap: 1.5rem 1.857rem;
+  grid-template-columns: repeat(2, 1fr);
+`;
