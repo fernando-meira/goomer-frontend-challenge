@@ -1,4 +1,4 @@
-import defaultRestaurantImage from 'assets/images/png/default-restaurant-logo.png';
+import defaultRestaurantImage from 'assets/images/default-restaurant-logo.png';
 
 import * as S from './styles';
 

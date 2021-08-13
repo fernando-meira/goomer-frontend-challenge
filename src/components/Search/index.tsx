@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-import searchIcon from 'assets/images/svg/search.svg';
+import searchIcon from 'assets/icons/search.svg';
 
 import * as S from './styles';
 

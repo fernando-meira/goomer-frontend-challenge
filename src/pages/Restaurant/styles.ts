@@ -21,6 +21,10 @@ export const Container = styled.main`
 
     section {
       /* section style */
+
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
     }
 
     aside {

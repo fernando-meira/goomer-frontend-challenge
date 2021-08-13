@@ -1,5 +1,5 @@
-import { Search, RestaurantInfo } from 'components';
 import { colors } from 'styles/colors';
+import { Search, Accordion, RestaurantInfo } from 'components';
 
 import * as S from './styles';
 
@@ -11,6 +11,8 @@ export function Restaurant() {
       <div className="grid-template">
         <section>
           <Search backgroundColor={colors.gray[300]} />
+
+          <Accordion />
         </section>
 
         <aside />
