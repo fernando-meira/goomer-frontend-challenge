@@ -1,3 +1,4 @@
+export { Modal } from './Modal';
 export { Header } from './Header';
 export { Search } from './Search';
 export { MenuCard } from './MenuCard';
