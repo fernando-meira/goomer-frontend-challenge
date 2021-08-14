@@ -5,22 +5,32 @@ import searchIcon from 'assets/icons/search.svg';
 import * as S from './styles';
 
 interface SearchProps {
+  labelText?: string;
+  searchValue: string;
   backgroundColor?: string;
+  setSearchValue: (param: string) => void;
 }
 
-export function Search({ backgroundColor }: SearchProps) {
+export function Search({
+  labelText,
+  searchValue,
+  setSearchValue,
+  backgroundColor,
+}: SearchProps) {
   const searchInput = useRef<HTMLInputElement>(null);
 
   return (
     <S.Container backgroundColor={backgroundColor}>
       <S.LabelWrapper onClick={() => searchInput.current?.focus()}>
-        <span>Buscar estabelecimento</span>
+        <span>{labelText ?? 'Buscar estabelecimento'}</span>
       </S.LabelWrapper>
 
       <input
         type="text"
         ref={searchInput}
-        placeholder="Buscar estabelecimento"
+        value={searchValue}
+        onChange={event => setSearchValue(event.target.value)}
+        placeholder={labelText ?? 'Buscar estabelecimento'}
       />
 
       <button type="button">

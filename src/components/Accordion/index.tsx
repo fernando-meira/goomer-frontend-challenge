@@ -1,4 +1,4 @@
-import { useState, useCallback, ReactElement } from 'react';
+import { useState, ReactElement } from 'react';
 
 import chevron from 'assets/icons/chevron.svg';
 
@@ -12,9 +12,9 @@ interface AccordionProps {
 export function Accordion({ children, category }: AccordionProps) {
   const [isActive, setIsActive] = useState(false);
 
-  const handleActive = useCallback(() => {
+  function handleActive() {
     setIsActive(!isActive);
-  }, [isActive]);
+  }
 
   return (
     <S.Container>

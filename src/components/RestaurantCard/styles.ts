@@ -31,14 +31,17 @@ export const ImageWrapper = styled.div`
 
   > img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
 
-    object-fit: contain;
+    object-fit: cover;
   }
 `;
 
 export const Content = styled.div`
-  padding: 0 1.65rem;
+  padding: 0.5rem;
+  padding-left: 1.5rem;
 
   flex: 1;
   display: flex;
@@ -49,7 +52,7 @@ export const Content = styled.div`
     overflow: hidden;
 
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
 
     font-size: 1rem;
