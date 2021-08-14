@@ -6,6 +6,10 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   flex-direction: row;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export const ImageWrapper = styled.div`
@@ -15,7 +19,7 @@ export const ImageWrapper = styled.div`
 
   > img {
     width: 100%;
-    height: auto;
+    height: 100%;
 
     object-fit: contain;
   }

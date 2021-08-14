@@ -18,6 +18,10 @@ export const Container = styled.button`
   :hover {
     transform: translateX(0.25rem);
   }
+
+  @media (max-width: 1280px) {
+    max-width: 100%;
+  }
 `;
 
 export const ImageWrapper = styled.div`
@@ -26,9 +30,9 @@ export const ImageWrapper = styled.div`
 
   > img {
     width: 100%;
-    height: auto;
+    height: 100%;
 
-    object-fit: contain;
+    object-fit: cover;
   }
 `;
 
@@ -79,6 +83,10 @@ export const Content = styled.div`
       color: ${colors.gray[600]};
       text-decoration: line-through;
     }
+  }
+
+  @media (max-width: 1280px) {
+    padding: 0.75rem;
   }
 `;
 
