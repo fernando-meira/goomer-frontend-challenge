@@ -1,22 +1,27 @@
 import defaultRestaurantImage from 'assets/images/default-restaurant-logo.png';
+import { IRestaurant } from 'interfaces/restaurant';
 
 import * as S from './styles';
 
 interface RestaurantCardProps {
   isOpen?: boolean;
+  restaurant: IRestaurant;
 }
 
-export function RestaurantCard({ isOpen }: RestaurantCardProps) {
+export function RestaurantCard({ isOpen, restaurant }: RestaurantCardProps) {
   return (
-    <S.Container to="/estabelecimento">
+    <S.Container to={`estabelecimento/${restaurant.id}`}>
       <S.ImageWrapper>
-        <img src={defaultRestaurantImage} alt="restaurant-logo" />
+        <img
+          src={restaurant.image ?? defaultRestaurantImage}
+          alt={`Logo do restaurante ${restaurant.name}`}
+        />
       </S.ImageWrapper>
 
       <S.Content>
-        <strong>Nome do Restaurante</strong>
+        <strong>{restaurant.name}</strong>
 
-        <p>Endereço do restaurante</p>
+        <p>{restaurant.address}</p>
       </S.Content>
 
       <S.Tag isOpen={isOpen}>
