@@ -2,12 +2,13 @@ import { useState, useEffect, useCallback } from 'react';
 
 import { api } from 'services/api';
 import { searchRestaurants } from 'functions';
-import { Search, RestaurantCard } from 'components';
 import { IRestaurant } from 'interfaces/restaurant';
+import { Search, Loader, RestaurantCard } from 'components';
 
 import * as S from './styles';
 
 export function Home() {
+  const [loading, setLoading] = useState(true);
   const [searchValue, setSearchValue] = useState('');
   const [restaurants, setRestaurants] = useState<IRestaurant[]>([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState<IRestaurant[]>(
@@ -21,6 +22,9 @@ export function Home() {
       setRestaurants(data);
     } catch (error) {
       throw new Error(error.message);
+      // Need to handle the error.
+    } finally {
+      setLoading(false);
     }
   }, []);
 
@@ -40,11 +44,15 @@ export function Home() {
 
       <Search searchValue={searchValue} setSearchValue={setSearchValue} />
 
-      <S.Content>
-        {filteredRestaurants.map(restaurant => (
-          <RestaurantCard key={restaurant.id} restaurant={restaurant} />
-        ))}
-      </S.Content>
+      {loading ? (
+        <Loader />
+      ) : (
+        <S.Content>
+          {filteredRestaurants.map(restaurant => (
+            <RestaurantCard key={restaurant.id} restaurant={restaurant} />
+          ))}
+        </S.Content>
+      )}
     </S.Container>
   );
 }
