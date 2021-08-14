@@ -37,7 +37,7 @@ export function MenuCard() {
         </S.Content>
       </S.Container>
 
-      <Modal isOpen={isModalOpen} closeModal={toggleModal} />
+      {isModalOpen && <Modal isOpen={isModalOpen} closeModal={toggleModal} />}
     </>
   );
 }

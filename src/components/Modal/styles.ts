@@ -25,6 +25,11 @@ export const HeaderModal = styled.header`
   position: relative;
 
   padding: 1.5rem;
+
+  > img {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 export const BodyModal = styled.div`
@@ -49,6 +54,7 @@ export const BodyModal = styled.div`
     > span {
       font-size: 2rem;
       font-weight: 500;
+      white-space: nowrap;
       color: ${colors.green[500]};
     }
   }

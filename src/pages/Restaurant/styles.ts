@@ -14,19 +14,33 @@ export const Container = styled.main`
     margin: 1.5rem 0 1rem;
   }
 
-  .grid-template {
-    display: grid;
-    grid-gap: 8rem;
-    grid-template-columns: 51rem auto;
+  @media (max-width: 768px) {
+    padding: 0 1.5rem;
+  }
+`;
 
-    section {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
+export const ContentWrapper = styled.div`
+  display: grid;
+  grid-gap: 10%;
+  grid-template-columns: 65% auto;
+
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  aside {
+    width: 100%;
+    height: 48rem;
+    background-color: ${colors.gray[300]};
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
 
     aside {
-      background-color: ${colors.gray[300]};
+      display: none;
     }
   }
 `;
@@ -42,4 +56,18 @@ export const WrapperCards = styled.div`
   display: grid;
   grid-gap: 1.5rem 1.857rem;
   grid-template-columns: repeat(2, 1fr);
+
+  @media (max-width: 1280px) {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
 `;

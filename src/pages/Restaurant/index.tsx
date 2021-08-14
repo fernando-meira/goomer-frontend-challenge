@@ -15,7 +15,7 @@ export function Restaurant() {
     <S.Container>
       <RestaurantInfo />
 
-      <div className="grid-template">
+      <S.ContentWrapper>
         <section>
           <Search backgroundColor={colors.gray[300]} />
 
@@ -35,7 +35,7 @@ export function Restaurant() {
         </section>
 
         <aside />
-      </div>
+      </S.ContentWrapper>
     </S.Container>
   );
 }

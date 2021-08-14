@@ -44,7 +44,7 @@ export const Container = styled.div<ContainerProps>`
     width: 100%;
   }
 
-  @media (max-width: 720px) {
+  @media (max-width: 768px) {
     > input {
       padding: 0.5rem 2rem;
 
@@ -81,7 +81,7 @@ export const LabelWrapper = styled.div`
     text-overflow: ellipsis;
   }
 
-  @media (max-width: 720px) {
+  @media (max-width: 768px) {
     display: none;
   }
 `;
