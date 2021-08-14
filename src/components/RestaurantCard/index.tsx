@@ -1,14 +1,15 @@
-import defaultRestaurantImage from 'assets/images/default-restaurant-logo.png';
 import { IRestaurant } from 'interfaces/restaurant';
+import defaultRestaurantImage from 'assets/images/default-restaurant-logo.png';
 
 import * as S from './styles';
 
 interface RestaurantCardProps {
-  isOpen?: boolean;
   restaurant: IRestaurant;
 }
 
-export function RestaurantCard({ isOpen, restaurant }: RestaurantCardProps) {
+export function RestaurantCard({ restaurant }: RestaurantCardProps) {
+  const isOpen = false;
+
   return (
     <S.Container to={`estabelecimento/${restaurant.id}`}>
       <S.ImageWrapper>

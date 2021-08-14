@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 
-import { api } from 'services/api';
 import { searchRestaurants } from 'functions';
 import { IRestaurant } from 'interfaces/restaurant';
 import { Search, Loader, RestaurantCard } from 'components';
+import { getRestaurants } from 'services/api/functions';
 
 import * as S from './styles';
 
@@ -17,9 +17,9 @@ export function Home() {
 
   async function fetchRestaurants() {
     try {
-      const { data } = await api.get<IRestaurant[]>('restaurants');
+      const restaurantsData = await getRestaurants();
 
-      setRestaurants(data);
+      setRestaurants(restaurantsData);
     } catch (error) {
       throw new Error(error.message);
       // Need to handle the error.
