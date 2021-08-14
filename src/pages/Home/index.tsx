@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 
 import { api } from 'services/api';
 import { searchRestaurants } from 'functions';
@@ -15,7 +15,7 @@ export function Home() {
     [],
   );
 
-  const fetchRestaurants = useCallback(async () => {
+  async function fetchRestaurants() {
     try {
       const { data } = await api.get<IRestaurant[]>('restaurants');
 
@@ -26,11 +26,11 @@ export function Home() {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }
 
   useEffect(() => {
     fetchRestaurants();
-  }, [fetchRestaurants]);
+  }, []);
 
   useEffect(() => {
     setFilteredRestaurants(
