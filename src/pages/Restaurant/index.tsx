@@ -1,9 +1,13 @@
+import { useState } from 'react';
+
 import { colors } from 'styles/colors';
 import { Search, Accordion, RestaurantInfo, MenuCard } from 'components';
 
 import * as S from './styles';
 
 export function Restaurant() {
+  const [searchValue, setSearchValue] = useState('');
+
   const menuCategories = [
     { id: 1, group: 'Almoços' },
     { id: 2, group: 'Bebidas' },
@@ -17,7 +21,11 @@ export function Restaurant() {
 
       <S.ContentWrapper>
         <section>
-          <Search backgroundColor={colors.gray[300]} />
+          <Search
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+            backgroundColor={colors.gray[300]}
+          />
 
           <S.Content>
             {menuCategories.map(category => (
