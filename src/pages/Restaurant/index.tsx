@@ -23,6 +23,7 @@ export function Restaurant() {
         <section>
           <Search
             searchValue={searchValue}
+            labelText="Buscar no cardápio"
             setSearchValue={setSearchValue}
             backgroundColor={colors.gray[300]}
           />

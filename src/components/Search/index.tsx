@@ -5,12 +5,14 @@ import searchIcon from 'assets/icons/search.svg';
 import * as S from './styles';
 
 interface SearchProps {
+  labelText?: string;
   searchValue: string;
   backgroundColor?: string;
   setSearchValue: (param: string) => void;
 }
 
 export function Search({
+  labelText,
   searchValue,
   setSearchValue,
   backgroundColor,
@@ -20,7 +22,7 @@ export function Search({
   return (
     <S.Container backgroundColor={backgroundColor}>
       <S.LabelWrapper onClick={() => searchInput.current?.focus()}>
-        <span>Buscar estabelecimento</span>
+        <span>{labelText ?? 'Buscar estabelecimento'}</span>
       </S.LabelWrapper>
 
       <input
@@ -28,7 +30,7 @@ export function Search({
         ref={searchInput}
         value={searchValue}
         onChange={event => setSearchValue(event.target.value)}
-        placeholder="Buscar estabelecimento"
+        placeholder={labelText ?? 'Buscar estabelecimento'}
       />
 
       <button type="button">
