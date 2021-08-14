@@ -5,10 +5,16 @@ import searchIcon from 'assets/icons/search.svg';
 import * as S from './styles';
 
 interface SearchProps {
+  searchValue: string;
   backgroundColor?: string;
+  setSearchValue: (param: string) => void;
 }
 
-export function Search({ backgroundColor }: SearchProps) {
+export function Search({
+  searchValue,
+  setSearchValue,
+  backgroundColor,
+}: SearchProps) {
   const searchInput = useRef<HTMLInputElement>(null);
 
   return (
@@ -20,6 +26,8 @@ export function Search({ backgroundColor }: SearchProps) {
       <input
         type="text"
         ref={searchInput}
+        value={searchValue}
+        onChange={event => setSearchValue(event.target.value)}
         placeholder="Buscar estabelecimento"
       />
 
