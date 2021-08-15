@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 
 import { searchRestaurants } from 'functions';
 import { IRestaurant } from 'interfaces/restaurant';
-import { Search, Loader, RestaurantCard } from 'components';
 import { getRestaurants } from 'services/api/functions';
+import { Search, Loader, RestaurantCard } from 'components';
 
 import * as S from './styles';
 
