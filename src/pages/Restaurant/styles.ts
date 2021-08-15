@@ -71,3 +71,17 @@ export const WrapperCards = styled.div`
     justify-content: center;
   }
 `;
+
+export const MenuWithoutItemsWrapper = styled.div`
+  padding: 0.5rem;
+  margin-top: 2rem;
+
+  display: flex;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+
+  p {
+    font-weight: 1.5rem;
+  }
+`;
