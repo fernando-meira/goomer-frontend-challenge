@@ -27,6 +27,8 @@ export function RestaurantCard({ restaurant }: RestaurantCardProps) {
   );
 
   useEffect(() => {
+    let interval: NodeJS.Timeout;
+
     function handleIsOpen() {
       setIsOpen(
         numberOfHours > 0
@@ -36,7 +38,7 @@ export function RestaurantCard({ restaurant }: RestaurantCardProps) {
           : false,
       );
 
-      setInterval(
+      interval = setInterval(
         () => {
           setIsOpen(
             numberOfHours > 0
@@ -51,6 +53,10 @@ export function RestaurantCard({ restaurant }: RestaurantCardProps) {
     }
 
     handleIsOpen();
+
+    return () => {
+      clearInterval(interval);
+    };
   }, [restaurant.hours, numberOfHours]);
 
   return (
