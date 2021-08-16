@@ -1,19 +1,74 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import { useParams } from 'react-router-dom';
 
+import {
+  Loader,
+  Search,
+  MenuCard,
+  Accordion,
+  RestaurantInfo,
+} from 'components';
 import { colors } from 'styles/colors';
-import { Search, Accordion, RestaurantInfo, MenuCard } from 'components';
+import { IMenu } from 'interfaces/menu';
+import { getRestaurantMenu } from 'services/api/functions';
+import { separateGroupsFromMenu } from 'functions/separateGroupsFromMenu';
 
 import * as S from './styles';
 
 export function Restaurant() {
+  const { id } = useParams<{ id: string }>();
+
+  const [loading, setLoading] = useState(true);
+  const [menu, setMenu] = useState<IMenu[]>([]);
   const [searchValue, setSearchValue] = useState('');
 
-  const menuCategories = [
-    { id: 1, group: 'Almoços' },
-    { id: 2, group: 'Bebidas' },
-    { id: 3, group: 'Sobremesas' },
-    { id: 4, group: 'Acompanhamentos' },
-  ];
+  useEffect(() => {
+    async function fetchMenu() {
+      setLoading(true);
+      try {
+        const menuData = await getRestaurantMenu({ id });
+
+        setMenu(menuData);
+      } catch (error) {
+        throw new Error(error.message);
+        // I need to handle the error.
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchMenu();
+  }, [id]);
+
+  const renderContent = useCallback(() => {
+    if (loading) {
+      return <Loader />;
+    }
+
+    if (menu.length === 0) {
+      return (
+        <S.MenuWithoutItemsWrapper>
+          <p>Nada para listar.</p>
+        </S.MenuWithoutItemsWrapper>
+      );
+    }
+
+    const { nameOfGroups, arrayOfProducts } = separateGroupsFromMenu(menu);
+
+    return (
+      <S.Content>
+        {nameOfGroups.map((category, index) => (
+          <Accordion key={category} category={category}>
+            <S.WrapperCards>
+              {arrayOfProducts[index].map(product => (
+                <MenuCard key={product.name} product={product} />
+              ))}
+            </S.WrapperCards>
+          </Accordion>
+        ))}
+      </S.Content>
+    );
+  }, [loading, menu]);
 
   return (
     <S.Container>
@@ -28,19 +83,7 @@ export function Restaurant() {
             backgroundColor={colors.gray[300]}
           />
 
-          <S.Content>
-            {menuCategories.map(category => (
-              <Accordion key={category.id} category={category.group}>
-                <S.WrapperCards>
-                  <MenuCard />
-
-                  <MenuCard />
-
-                  <MenuCard />
-                </S.WrapperCards>
-              </Accordion>
-            ))}
-          </S.Content>
+          {renderContent()}
         </section>
 
         <aside />

@@ -7,7 +7,7 @@ export function Routes() {
     <Switch>
       <Route path="/" exact component={Home} />
 
-      <Route path="/estabelecimento" component={Restaurant} />
+      <Route path="/estabelecimento/:id" component={Restaurant} />
     </Switch>
   );
 }

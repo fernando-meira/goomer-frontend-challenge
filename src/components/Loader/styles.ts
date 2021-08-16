@@ -13,11 +13,16 @@ const rotate = keyframes`
   }
 `;
 
-export const Container = styled(VscLoading)`
+export const Container = styled.div`
+  width: 100%;
   margin-top: 2rem;
 
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
+export const Icon = styled(VscLoading)`
   font-size: 2rem;
   color: ${colors.green[500]};
   animation: ${rotate} 0.8s linear infinite;
