@@ -19,6 +19,12 @@ export const Container = styled.button`
     transform: translateX(0.25rem);
   }
 
+  :disabled {
+    opacity: 0.4;
+
+    transform: none;
+  }
+
   @media (max-width: 1280px) {
     max-width: 100%;
   }
