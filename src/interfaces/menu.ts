@@ -8,9 +8,9 @@ interface ISales {
 
 export interface IMenu {
   name: string;
-  image: string;
-  price: number;
+  image?: string;
+  price?: number;
   group: string;
-  sales: ISales[];
+  sales?: ISales[];
   restaurantId: number;
 }
