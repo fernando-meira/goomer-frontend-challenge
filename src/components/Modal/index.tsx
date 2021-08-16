@@ -35,11 +35,11 @@ export function Modal({ isOpen, product, closeModal }: ModalProps) {
         <S.CloseModalButton onClick={closeModal}>
           <img src={xIcon} alt="x-icon" />
         </S.CloseModalButton>
-
-        <img src={product.image ?? defaultDish} alt={`${product.name} foto`} />
       </S.HeaderModal>
 
       <S.BodyModal>
+        <img src={product.image ?? defaultDish} alt={`${product.name} foto`} />
+
         <strong>{product.name}</strong>
 
         <div>
