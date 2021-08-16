@@ -10,8 +10,8 @@ import {
 } from 'components';
 import { colors } from 'styles/colors';
 import { IMenu } from 'interfaces/menu';
+import { search, separateGroupsFromMenu } from 'functions';
 import { getRestaurantMenu } from 'services/api/functions';
-import { separateGroupsFromMenu } from 'functions/separateGroupsFromMenu';
 
 import * as S from './styles';
 
@@ -21,6 +21,11 @@ export function Restaurant() {
   const [loading, setLoading] = useState(true);
   const [menu, setMenu] = useState<IMenu[]>([]);
   const [searchValue, setSearchValue] = useState('');
+  const [filteredProducts, setFilteredProducts] = useState<IMenu[]>(menu);
+
+  useEffect(() => {
+    setFilteredProducts(search({ searchValue, allItems: menu }));
+  }, [menu, searchValue]);
 
   useEffect(() => {
     async function fetchMenu() {
@@ -45,7 +50,7 @@ export function Restaurant() {
       return <Loader />;
     }
 
-    if (menu.length === 0) {
+    if (filteredProducts.length === 0) {
       return (
         <S.MenuWithoutItemsWrapper>
           <p>Nada para listar.</p>
@@ -53,7 +58,8 @@ export function Restaurant() {
       );
     }
 
-    const { nameOfGroups, arrayOfProducts } = separateGroupsFromMenu(menu);
+    const { nameOfGroups, arrayOfProducts } =
+      separateGroupsFromMenu(filteredProducts);
 
     return (
       <S.Content>
@@ -68,7 +74,7 @@ export function Restaurant() {
         ))}
       </S.Content>
     );
-  }, [loading, menu]);
+  }, [loading, filteredProducts]);
 
   return (
     <S.Container>
