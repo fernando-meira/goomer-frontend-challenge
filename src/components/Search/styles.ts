@@ -54,7 +54,7 @@ export const Container = styled.div<ContainerProps>`
     }
   }
 
-  @media (max-width: 280px) {
+  @media (max-width: 360px) {
     > button {
       display: none;
     }
