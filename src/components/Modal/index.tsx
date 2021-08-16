@@ -1,16 +1,19 @@
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
 
+import { IMenu } from 'interfaces/menu';
+import { formatCurrency } from 'functions';
 import xIcon from 'assets/images/x-icon.jpg';
 import defaultDish from 'assets/images/default-dish@2x.png';
 
 import * as S from './styles';
 
 interface ModalProps {
+  product: IMenu;
   isOpen: boolean;
   closeModal: () => void;
 }
 
-export function Modal({ isOpen, closeModal }: ModalProps) {
+export function Modal({ isOpen, product, closeModal }: ModalProps) {
   return (
     <S.Container
       isOpen={isOpen}
@@ -22,11 +25,11 @@ export function Modal({ isOpen, closeModal }: ModalProps) {
           <img src={xIcon} alt="x-icon" />
         </S.CloseModalButton>
 
-        <img src={defaultDish} alt="dish" />
+        <img src={product.image ?? defaultDish} alt={`${product.name} foto`} />
       </S.HeaderModal>
 
       <S.BodyModal>
-        <strong>Nome do prato</strong>
+        <strong>{product.name}</strong>
 
         <div>
           <p>
@@ -34,7 +37,7 @@ export function Modal({ isOpen, closeModal }: ModalProps) {
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
 
-          <span>R$ 19,90</span>
+          {product.price && <span>{formatCurrency(product.price)}</span>}
         </div>
       </S.BodyModal>
 
@@ -54,7 +57,7 @@ export function Modal({ isOpen, closeModal }: ModalProps) {
         <button type="button">
           <p>Adicionar</p>
 
-          <p>R$ 19,90</p>
+          {product.price && <p>{formatCurrency(product.price)}</p>}
         </button>
       </S.FooterModal>
     </S.Container>
