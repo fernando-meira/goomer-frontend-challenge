@@ -21,8 +21,8 @@ export const Container = styled.main`
     padding: 0 3.5rem;
   }
 
-  @media (max-width: 720px) {
-    padding: 0 2.5rem;
+  @media (max-width: 768px) {
+    padding: 0 1.5rem;
   }
 `;
 
@@ -38,7 +38,7 @@ export const Content = styled.div`
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (max-width: 720px) {
+  @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
 `;

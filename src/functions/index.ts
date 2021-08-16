@@ -1,3 +1,4 @@
+export { search } from './search';
 export { formatCurrency } from './formatCurrency';
 export { searchRestaurants } from './searchRestaurants';
 export { separateGroupsFromMenu } from './separateGroupsFromMenu';
