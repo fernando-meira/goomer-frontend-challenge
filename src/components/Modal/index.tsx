@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
 
 import { IMenu } from 'interfaces/menu';
@@ -14,6 +15,16 @@ interface ModalProps {
 }
 
 export function Modal({ isOpen, product, closeModal }: ModalProps) {
+  const [productAmount, setProductAmount] = useState(1);
+
+  const handleChangeAmount = (action: 'increment' | 'decrement') => {
+    if (action === 'increment') {
+      setProductAmount(productAmount + 1);
+    } else if (action === 'decrement' && productAmount > 1) {
+      setProductAmount(productAmount - 1);
+    }
+  };
+
   return (
     <S.Container
       isOpen={isOpen}
@@ -43,13 +54,13 @@ export function Modal({ isOpen, product, closeModal }: ModalProps) {
 
       <S.FooterModal>
         <div>
-          <button type="button">
+          <button type="button" onClick={() => handleChangeAmount('decrement')}>
             <AiOutlineMinus />
           </button>
 
-          <p>1</p>
+          <p>{productAmount}</p>
 
-          <button type="button">
+          <button type="button" onClick={() => handleChangeAmount('increment')}>
             <AiOutlinePlus />
           </button>
         </div>
@@ -57,7 +68,9 @@ export function Modal({ isOpen, product, closeModal }: ModalProps) {
         <button type="button">
           <p>Adicionar</p>
 
-          {product.price && <p>{formatCurrency(product.price)}</p>}
+          {product.price && (
+            <p>{formatCurrency(productAmount * product.price)}</p>
+          )}
         </button>
       </S.FooterModal>
     </S.Container>
