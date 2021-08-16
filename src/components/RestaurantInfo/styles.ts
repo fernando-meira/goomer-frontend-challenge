@@ -46,7 +46,9 @@ export const Content = styled.div`
   span {
     font-size: 0.75rem;
 
-    time {
+    > time {
+      margin-left: 0.25rem;
+
       font-weight: 600;
     }
   }
