@@ -11,6 +11,7 @@ import {
 import { colors } from 'styles/colors';
 import { IMenu } from 'interfaces/menu';
 import { getRestaurantMenu } from 'services/api/functions';
+import { separateGroupsFromMenu } from 'functions/separateGroupsFromMenu';
 
 import * as S from './styles';
 
@@ -40,29 +41,32 @@ export function Restaurant() {
   }, [id]);
 
   const renderContent = useCallback(() => {
-    if (loading) return <Loader />;
+    if (loading) {
+      return <Loader />;
+    }
 
-    if (menu.length > 0)
+    if (menu.length === 0) {
       return (
-        <S.Content>
-          {menu.map(category => (
-            <Accordion key={category.name} category={category?.group}>
-              <S.WrapperCards>
-                <MenuCard />
-
-                <MenuCard />
-
-                <MenuCard />
-              </S.WrapperCards>
-            </Accordion>
-          ))}
-        </S.Content>
+        <S.MenuWithoutItemsWrapper>
+          <p>Nada para listar.</p>
+        </S.MenuWithoutItemsWrapper>
       );
+    }
+
+    const { nameOfGroups, arrayOfProducts } = separateGroupsFromMenu(menu);
 
     return (
-      <S.MenuWithoutItemsWrapper>
-        <p>Nada para listar.</p>
-      </S.MenuWithoutItemsWrapper>
+      <S.Content>
+        {nameOfGroups.map((category, index) => (
+          <Accordion key={category} category={category}>
+            <S.WrapperCards>
+              {arrayOfProducts[index].map(product => (
+                <MenuCard key={product.name} product={product} />
+              ))}
+            </S.WrapperCards>
+          </Accordion>
+        ))}
+      </S.Content>
     );
   }, [loading, menu]);
 
