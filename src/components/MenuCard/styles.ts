@@ -19,6 +19,12 @@ export const Container = styled.button`
     transform: translateX(0.25rem);
   }
 
+  :disabled {
+    opacity: 0.5;
+
+    transform: none;
+  }
+
   @media (max-width: 1280px) {
     max-width: 100%;
   }
@@ -82,6 +88,12 @@ export const Content = styled.div`
       font-size: 0.75rem;
       color: ${colors.gray[600]};
       text-decoration: line-through;
+    }
+
+    > svg + p {
+      margin-left: 0.25rem;
+
+      font-size: 0.75rem;
     }
   }
 

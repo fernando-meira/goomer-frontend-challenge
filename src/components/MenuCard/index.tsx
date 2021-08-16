@@ -33,15 +33,7 @@ export function MenuCard({ product }: MenuCardProps) {
   }, [setIsBlocked, product.price]);
 
   const renderPrice = useCallback(() => {
-    if (isBlocked) {
-      return (
-        <>
-          <AiFillLock color={colors.green[500]} size="1rem" />
-        </>
-      );
-    }
-
-    if (product.sales) {
+    if (product.sales && product.price) {
       return (
         <>
           <p>{formatCurrency(product.sales[0].price)}</p>
@@ -51,12 +43,22 @@ export function MenuCard({ product }: MenuCardProps) {
       );
     }
 
-    return <p>{formatCurrency(product.price)}</p>;
-  }, [isBlocked, product.sales, product.price]);
+    if (product.price) {
+      return <p>{formatCurrency(product.price)}</p>;
+    }
+
+    return (
+      <>
+        <AiFillLock color={colors.green[500]} size="1rem" />
+
+        <p>Produto indisponível</p>
+      </>
+    );
+  }, [product.sales, product.price]);
 
   return (
     <>
-      <S.Container onClick={toggleModal}>
+      <S.Container onClick={toggleModal} disabled={isBlocked}>
         <S.ImageWrapper>
           <img
             src={product.image ?? defaultDish}
@@ -81,7 +83,13 @@ export function MenuCard({ product }: MenuCardProps) {
         </S.Content>
       </S.Container>
 
-      {isModalOpen && <Modal isOpen={isModalOpen} closeModal={toggleModal} />}
+      {isModalOpen && (
+        <Modal
+          product={product}
+          isOpen={isModalOpen}
+          closeModal={toggleModal}
+        />
+      )}
     </>
   );
 }
