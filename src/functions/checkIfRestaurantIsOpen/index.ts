@@ -51,25 +51,25 @@ export function checkIfRestaurantIsOpen({
 
     if (fromDateTime > toDateTime) {
       let oneMoreDay = day;
-      let lessADay = day;
+      let lessOneDay = day;
 
       if (day === 1) {
         oneMoreDay = day + 1;
-        lessADay = 7;
+        lessOneDay = 7;
       } else if (day === 7) {
         oneMoreDay = 1;
-        lessADay = day - 1;
+        lessOneDay = day - 1;
       } else {
         oneMoreDay = day + 1;
-        lessADay = day - 1;
+        lessOneDay = day - 1;
       }
 
-      if (hour.days.includes(oneMoreDay)) {
+      if (hour.days.includes(day) || hour.days.includes(oneMoreDay)) {
         toDateTime = addDays(toDateTime, 1);
 
         day = toDateTime.getDay() + 1;
         day = day === 1 ? 7 : day - 1;
-      } else if (hour.days.includes(lessADay)) {
+      } else if (hour.days.includes(lessOneDay)) {
         fromDateTime = subDays(fromDateTime, 1);
 
         day = fromDateTime.getDay() - 1;
