@@ -1,4 +1,4 @@
-export { search } from './search';
+export { searchProducts } from './searchProducts';
 export { formatCurrency } from './formatCurrency';
 export { searchRestaurants } from './searchRestaurants';
 export { separateGroupsFromMenu } from './separateGroupsFromMenu';

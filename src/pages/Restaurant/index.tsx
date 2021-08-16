@@ -10,8 +10,8 @@ import {
 } from 'components';
 import { colors } from 'styles/colors';
 import { IMenu } from 'interfaces/menu';
-import { search, separateGroupsFromMenu } from 'functions';
 import { getRestaurantMenu } from 'services/api/functions';
+import { searchProducts, separateGroupsFromMenu } from 'functions';
 
 import * as S from './styles';
 
@@ -24,7 +24,7 @@ export function Restaurant() {
   const [filteredProducts, setFilteredProducts] = useState<IMenu[]>(menu);
 
   useEffect(() => {
-    setFilteredProducts(search({ searchValue, allItems: menu }));
+    setFilteredProducts(searchProducts({ searchValue, allProducts: menu }));
   }, [menu, searchValue]);
 
   useEffect(() => {
