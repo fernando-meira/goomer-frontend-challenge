@@ -20,7 +20,7 @@ export const Container = styled.button`
   }
 
   :disabled {
-    opacity: 0.4;
+    opacity: 0.5;
 
     transform: none;
   }
@@ -88,6 +88,12 @@ export const Content = styled.div`
       font-size: 0.75rem;
       color: ${colors.gray[600]};
       text-decoration: line-through;
+    }
+
+    > svg + p {
+      margin-left: 0.25rem;
+
+      font-size: 0.75rem;
     }
   }
 

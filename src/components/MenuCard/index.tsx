@@ -50,6 +50,8 @@ export function MenuCard({ product }: MenuCardProps) {
     return (
       <>
         <AiFillLock color={colors.green[500]} size="1rem" />
+
+        <p>Produto indisponível</p>
       </>
     );
   }, [product.sales, product.price]);
