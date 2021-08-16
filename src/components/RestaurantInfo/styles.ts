@@ -7,8 +7,9 @@ export const Container = styled.div`
   align-items: center;
   flex-direction: row;
 
-  @media (max-width: 768px) {
+  @media (max-width: 450px) {
     flex-direction: column;
+    align-items: flex-start;
   }
 `;
 
@@ -20,8 +21,18 @@ export const ImageWrapper = styled.div`
   > img {
     width: 100%;
     height: 100%;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
 
-    object-fit: contain;
+    object-fit: cover;
+  }
+
+  @media (max-width: 450px) {
+    width: 100%;
+
+    img {
+      border-radius: 4px;
+    }
   }
 `;
 
