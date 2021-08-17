@@ -38,21 +38,35 @@ export function Home() {
     );
   }, [searchValue, restaurants]);
 
+  const renderContent = () => {
+    if (loading) {
+      return <Loader />;
+    }
+
+    if (filteredRestaurants.length > 0) {
+      return (
+        <S.Content>
+          {filteredRestaurants.map(restaurant => (
+            <RestaurantCard key={restaurant.id} restaurant={restaurant} />
+          ))}
+        </S.Content>
+      );
+    }
+
+    return (
+      <S.NoItemsToRender>
+        <p>Nada para listar.</p>
+      </S.NoItemsToRender>
+    );
+  };
+
   return (
     <S.Container>
       <h1>Bem-vindo ao Lista Rango</h1>
 
       <Search searchValue={searchValue} setSearchValue={setSearchValue} />
 
-      {loading ? (
-        <Loader />
-      ) : (
-        <S.Content>
-          {filteredRestaurants.map(restaurant => (
-            <RestaurantCard key={restaurant.id} restaurant={restaurant} />
-          ))}
-        </S.Content>
-      )}
+      {renderContent()}
     </S.Container>
   );
 }
