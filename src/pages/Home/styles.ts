@@ -42,3 +42,17 @@ export const Content = styled.div`
     grid-template-columns: 1fr;
   }
 `;
+
+export const NoItemsToRender = styled.div`
+  padding: 0.5rem;
+  margin-top: 2rem;
+
+  display: flex;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+
+  p {
+    font-weight: 1.5rem;
+  }
+`;

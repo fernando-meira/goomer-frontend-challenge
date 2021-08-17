@@ -60,7 +60,7 @@ export function MenuCard({ product }: MenuCardProps) {
       <>
         <AiFillLock color={colors.green[500]} size="1rem" />
 
-        <p>Produto indisponível</p>
+        <p>Produto sem valor</p>
       </>
     );
   }, [product.price, promotion]);

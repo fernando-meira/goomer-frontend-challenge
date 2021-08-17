@@ -103,7 +103,7 @@ export const Content = styled.div`
 `;
 
 export const PromotionTag = styled.span`
-  top: 0.6rem;
+  top: -0.5rem;
   right: 0.5rem;
   position: absolute;
 
