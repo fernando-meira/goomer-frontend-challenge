@@ -120,7 +120,7 @@ Para o gerenciamento de estados globais da aplicação utilizei o <a href="https
 ---
 
 ### Melhorias
-<p>Uma melhoria na aplicação seria a implementação dos testes unitários para evitar erros que não foram previstos durante o desenvolvimento. Relacionado a performance, poderiamos migrar o projeto de CRA para <a href="https://nextjs.org/">Next.js</a>, com isso ganhariamos desempenho graças as páginas server side rendering e static site generator que a ferramenta oferece, e ainda teriamos um melhor gerenciamento de SEO.</p>
+<p>Uma melhoria na aplicação seria a implementação dos testes unitários para evitar erros que não foram previstos durante o desenvolvimento, outro ponto a ser revisto é o tratamento de erros, hoje está sendo feito através do <i>throw new error</i>, poderia ser adicionado um toast ou um alert para notificação ao usuário. Relacionado a performance, poderiamos migrar o projeto de CRA para <a href="https://nextjs.org/">Next.js</a>, com isso ganhariamos desempenho graças as páginas server side rendering e static site generator que a ferramenta oferece, e ainda teriamos um melhor gerenciamento de SEO.</p>
 
 ---
 
