@@ -3,7 +3,7 @@
   <img src="https://img.shields.io/static/v1?label=progress&message=85%&color=#009CA3%3CCOLOR%3E&style=plastic%3CSTYLE%3E&logo=react%3CLOGO%3E" />
 </div>
 
-![Logo do Markdown](src/assets/image/lista-rango-mockup-readme.png)
+![Logo do Markdown](src/assets/images/lista-rango-mockup-readme.png)
 
 <h1 align="center">Goomer Lista Rango</h1>
 
