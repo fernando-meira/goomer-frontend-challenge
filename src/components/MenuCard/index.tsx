@@ -1,13 +1,14 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useMemo } from 'react';
 import { AiFillLock } from 'react-icons/ai';
 
 import { Modal } from 'components';
+import { colors } from 'styles/colors';
 import { IMenu } from 'interfaces/menu';
-import { formatCurrency } from 'functions';
 import award from 'assets/icons/award.svg';
 import defaultDish from 'assets/images/default-dish.png';
+import { activePromotion, formatCurrency } from 'functions';
+import { ModalProductContent } from '../Modal/components/ModalProductContent';
 
-import { colors } from 'styles/colors';
 import * as S from './styles';
 
 interface MenuCardProps {
@@ -17,6 +18,14 @@ interface MenuCardProps {
 export function MenuCard({ product }: MenuCardProps) {
   const [isBlocked, setIsBlocked] = useState(false);
   const [isModalOpen, setModalVisibility] = useState(false);
+
+  const promotion = useMemo(
+    () =>
+      activePromotion({
+        sales: product.sales,
+      }),
+    [product],
+  );
 
   const toggleModal = useCallback(() => {
     if (isBlocked) {
@@ -33,30 +42,32 @@ export function MenuCard({ product }: MenuCardProps) {
   }, [setIsBlocked, product.price]);
 
   const renderPrice = useCallback(() => {
-    if (isBlocked) {
+    if (promotion && product.price) {
       return (
         <>
-          <AiFillLock color={colors.green[500]} size="1rem" />
-        </>
-      );
-    }
-
-    if (product.sales) {
-      return (
-        <>
-          <p>{formatCurrency(product.sales[0].price)}</p>
+          <p>{formatCurrency(promotion.price)}</p>
 
           <span>{formatCurrency(product.price)}</span>
         </>
       );
     }
 
-    return <p>{formatCurrency(product.price)}</p>;
-  }, [isBlocked, product.sales, product.price]);
+    if (product.price) {
+      return <p>{formatCurrency(product.price)}</p>;
+    }
+
+    return (
+      <>
+        <AiFillLock color={colors.green[500]} size="1rem" />
+
+        <p>Produto indisponível</p>
+      </>
+    );
+  }, [product.price, promotion]);
 
   return (
     <>
-      <S.Container onClick={toggleModal}>
+      <S.Container onClick={toggleModal} disabled={isBlocked}>
         <S.ImageWrapper>
           <img
             src={product.image ?? defaultDish}
@@ -67,11 +78,11 @@ export function MenuCard({ product }: MenuCardProps) {
         <S.Content>
           <strong>{product.name}</strong>
 
-          {product.sales && (
+          {!!promotion && (
             <S.PromotionTag>
               <img src={award} alt="Promotion tag" />
 
-              <small>{product.sales[0].description}</small>
+              <small>{promotion.description}</small>
             </S.PromotionTag>
           )}
 
@@ -81,7 +92,13 @@ export function MenuCard({ product }: MenuCardProps) {
         </S.Content>
       </S.Container>
 
-      {isModalOpen && <Modal isOpen={isModalOpen} closeModal={toggleModal} />}
+      {isModalOpen && (
+        <Modal isOpen={isModalOpen} closeModal={toggleModal}>
+          <ModalProductContent
+            product={{ ...product, activePromotion: promotion }}
+          />
+        </Modal>
+      )}
     </>
   );
 }

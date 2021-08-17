@@ -1,6 +1,6 @@
 import { IHours } from './restaurant';
 
-interface ISales {
+export interface ISale {
   price: number;
   hours: IHours[];
   description: string;
@@ -8,9 +8,9 @@ interface ISales {
 
 export interface IMenu {
   name: string;
-  image: string;
-  price: number;
+  image?: string;
+  price?: number;
   group: string;
-  sales: ISales[];
+  sales?: ISale[];
   restaurantId: number;
 }

@@ -1,26 +1,9 @@
-import { addDays, subDays } from 'date-fns';
-import { zonedTimeToUtc } from 'date-fns-tz';
-
 import { IHours } from 'interfaces/restaurant';
+import { timezoneToBrazil } from '../date';
+import { isOnTime } from '../isOnTime';
 
 interface CheckIfRestaurantIsOpenProps {
   hours?: IHours[];
-}
-
-interface HandleDateProps {
-  date?: Date;
-  hour: number;
-  minutes: number;
-}
-
-function timezoneToBrazil(date: Date) {
-  return zonedTimeToUtc(date, 'America/Sao_Paulo');
-}
-
-function handleDate({ date, hour, minutes }: HandleDateProps) {
-  return timezoneToBrazil(
-    new Date((date ?? new Date()).setHours(hour, minutes, 0)),
-  );
 }
 
 export function checkIfRestaurantIsOpen({
@@ -33,58 +16,9 @@ export function checkIfRestaurantIsOpen({
   const currentDateTime = timezoneToBrazil(new Date());
   const currentDayNumber = currentDateTime.getDay() + 1;
 
-  const result = hours.some(hour => {
-    const [fromHours, fromMinutes] = hour.from.split(':');
-    const [toHours, toMinutes] = hour.to.split(':');
-
-    let fromDateTime = handleDate({
-      hour: Number(fromHours),
-      minutes: Number(fromMinutes),
-    });
-
-    let toDateTime = handleDate({
-      hour: Number(toHours),
-      minutes: Number(toMinutes),
-    });
-
-    let day = currentDayNumber;
-
-    if (fromDateTime > toDateTime) {
-      let oneMoreDay = day;
-      let lessOneDay = day;
-
-      if (day === 1) {
-        oneMoreDay = day + 1;
-        lessOneDay = 7;
-      } else if (day === 7) {
-        oneMoreDay = 1;
-        lessOneDay = day - 1;
-      } else {
-        oneMoreDay = day + 1;
-        lessOneDay = day - 1;
-      }
-
-      if (hour.days.includes(day) || hour.days.includes(oneMoreDay)) {
-        toDateTime = addDays(toDateTime, 1);
-
-        day = toDateTime.getDay() + 1;
-        day = day === 1 ? 7 : day - 1;
-      } else if (hour.days.includes(lessOneDay)) {
-        fromDateTime = subDays(fromDateTime, 1);
-
-        day = fromDateTime.getDay() - 1;
-        day = day === 7 ? 1 : day + 1;
-      } else {
-        return false;
-      }
-    }
-
-    return (
-      currentDateTime >= fromDateTime &&
-      currentDateTime <= toDateTime &&
-      hour.days.includes(day)
-    );
-  });
+  const result = hours.some(hour =>
+    isOnTime({ hour, date: currentDateTime, dayNumber: currentDayNumber }),
+  );
 
   return result;
 }
