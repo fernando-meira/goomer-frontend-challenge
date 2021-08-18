@@ -33,14 +33,13 @@
 - [x] Exibir restaurantes abertos e fechados sem a necessidade de recarregar ou reabrir a página.
 
 #### Estabelecimento
-- [x] Exibir o nome, a imagem, o endereço e o horário de funcionamento do restautante caso exitam
-
+- [x] Exibir o nome, a imagem, o endereço e o horário de funcionamento do restautante caso exitam.
 - [x] Listar cardárpio do restaurante.
 - [x] Buscar por um ou mais produtos do cardápio.
 - [x] Exibir o nome, a imagem, o valor e uma descrição do produto caso existam.
 - [x] Para os produtos com promoção ativa, deve ser exibibo o valor original e o valor promocional.
 - [x] As promoções ativas e o valor promocional devem ser atualizados na interface de acordo com o horário, sem a necessidade de recarregar ou reabrir a página.
-- [x] Quando o usuário clicar em um produto, abrir um modal exibindo as informações desse produto e opções de adicionar e remover quantidades desse produto, exibir também o valor original e o valor total com base na quantidade de produtos selecionados.
+- [x] Quando o usuário clicar em um produto, abrir um modal exibindo suas informações e opções de adicionar e remover quantidades desse produto, exibir também o valor original e o valor total com base na quantidade selecionada.
 
 #### Outros
 - [x] Testes unitários nas principais funções do projeto.
@@ -52,16 +51,16 @@
 As seguintes ferramentas foram usadas na construção do projeto:
 
 - [React](https://pt-br.reactjs.org/)
-- [Node.js](https://nodejs.org/en/)
 - [TypeScript](https://www.typescriptlang.org/)
 
 #### Auxiliares
+- [Jest](https://jestjs.io/)
 - [Axios](https://github.com/axios/axios)
 - [Date-fns](https://date-fns.org/)
 - [React Redux](https://react-redux.js.org/)
 - [React Modal](https://www.npmjs.com/package/react-modal)
 - [React Router Dom](https://reactrouter.com/web/guides/quick-start)
-- [Styled components](https://styled-components.com/)
+- [Styled Components](https://styled-components.com/)
 
 #### Padronização de código/commits:
 - [ESLint](https://eslint.org/)
@@ -119,20 +118,38 @@ yarn
 ```bash
 yarn start
 ```
-#### O servidor inciará na porta:3000 - acesse <http://localhost:3000>
+#### O servidor inciará na porta :3000 - acesse <http://localhost:3000>
 
 ---
 
+### Testes
+
+![Terminado com testes](src/assets/readme/terminal-with-tests.png)
+
+##### Execute o comando a seguir para rodar os testes unitários
+```bash
+yarn test
+```
+___
+
+
 ### Desafios
-<p> Sem dúvidas a feature mais complexa foi a de tratamento dos horários dos restaurantes e dos valores promocionais, as informações terem de ser atualizadas em tela sem o recarregamento também foi desafiador.</br>
-Para o gerenciamento de estados globais da aplicação utilizei o <a href="https://react-redux.js.org/">Redux</a>, normalmente utilizo a <a href="https://pt-br.reactjs.org/">Context API</a>, mas queria me testar e apesar de não ter o domínio da ferramenta a implementação foi bem-sucedida. Outro ponto foram os testes unitários, até esse projeto eu não tinha tido contato, apesar de não implementar nos componentes consegui nas principais funções.
+<p> Sem dúvidas a feature mais complexa foi a de tratamento dos horários dos restaurantes e dos valores promocionais, as informações terem de ser atualizadas em tela sem o recarregamento também foi desafiador.
+
+Para o gerenciamento de estados globais da aplicação utilizei o <a href="https://react-redux.js.org/">Redux</a>, normalmente utilizo a <a href="https://pt-br.reactjs.org/">Context API</a>, mas queria me testar e apesar de não ter o domínio da ferramenta a implementação foi bem-sucedida.
+
+Outro ponto foram os testes unitários, até esse projeto eu não tinha tido contato, apesar de não implementar nos componentes consegui nas principais funções.
 </p>
 
 ---
 
 ### Melhorias
 <p>Uma melhoria na aplicação seria a implementação dos testes unitários nos componentes utilizando <a href="https://jestjs.io/pt-BR/">Jest</a> combinado com <a href="https://testing-library.com/">Testing Library
-</a> para evitar erros que não foram previstos durante o desenvolvimento, outro ponto a ser revisto é o tratamento de erros, hoje está sendo feito através do <i>throw new error</i>, poderia ser adicionado um toast ou um alert para notificação ao usuário. Relacionado a performance, poderiamos migrar o projeto de CRA para <a href="https://nextjs.org/">Next.js</a>, com isso ganhariamos desempenho graças as páginas server side rendering e static site generator que a ferramenta oferece, e ainda teriamos um melhor gerenciamento de SEO.</p>
+</a> para evitar erros que não foram previstos durante o desenvolvimento.
+
+Outro ponto a ser revisto é o tratamento de erros, hoje está sendo feito através do <i>throw new error</i>, poderia ser adicionado um toast ou um alert para notificação ao usuário.
+
+Relacionado a performance, poderiamos migrar o projeto de CRA para <a href="https://nextjs.org/">Next.js</a>, com isso ganhariamos desempenho graças as páginas server side rendering e static site generator que a ferramenta oferece, e ainda teriamos um melhor gerenciamento de SEO.</p>
 
 ---
 
