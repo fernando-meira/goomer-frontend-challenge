@@ -1,6 +1,6 @@
 <div>
   <img src="https://img.shields.io/static/v1?label=React&message=17.0.2&color=#009CA3%3CCOLOR%3E&style=plastic%3CSTYLE%3E&logo=react%3CLOGO%3E" alt="Version of the react" />
-  <img src="https://img.shields.io/static/v1?label=progress&message=85%&color=#009CA3%3CCOLOR%3E&style=plastic%3CSTYLE%3E&logo=react%3CLOGO%3E" />
+  <img src="https://img.shields.io/static/v1?label=progress&message=99%&color=#009CA3%3CCOLOR%3E&style=plastic%3CSTYLE%3E&logo=react%3CLOGO%3E" />
 </div>
 
 ![Logo do Markdown](src/assets/readme/lista-rango-mockup-readme.png)
@@ -20,7 +20,7 @@
 </p>
 
 <h4 align="center">
-	 Status: Em desenvolvimento!
+	 Status: Teste entregue!
 </h4>
 
 ---
