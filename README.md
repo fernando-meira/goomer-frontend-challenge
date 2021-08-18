@@ -84,15 +84,6 @@ src/
 
 ---
 
-### Testes
-
-![Terminado com testes](src/assets/readme/terminal-with-tests.png)
-
-##### Execute o comando a seguir para rodar os testes unitários
-```bash
-yarn test
-```
-
 ### Como usar
 #### Pré-requisitos
 
