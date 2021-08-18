@@ -1,9 +1,9 @@
 <div>
   <img src="https://img.shields.io/static/v1?label=React&message=17.0.2&color=#009CA3%3CCOLOR%3E&style=plastic%3CSTYLE%3E&logo=react%3CLOGO%3E" alt="Version of the react" />
-  <img src="https://img.shields.io/static/v1?label=progress&message=85%&color=#009CA3%3CCOLOR%3E&style=plastic%3CSTYLE%3E&logo=react%3CLOGO%3E" />
+  <img src="https://img.shields.io/static/v1?label=progress&message=99%&color=#009CA3%3CCOLOR%3E&style=plastic%3CSTYLE%3E&logo=react%3CLOGO%3E" />
 </div>
 
-![Logo do Markdown](src/assets/images/lista-rango-mockup-readme.png)
+![Logo do Markdown](src/assets/readme/lista-rango-mockup-readme.png)
 
 <h1 align="center">Goomer Lista Rango</h1>
 
@@ -13,13 +13,14 @@
  <a href="#features">Features</a> •
  <a href="#-tecnologias">Tecnologias</a> •
  <a href="#arquitetura">Arquitetura</a> •
+ <a href="#testes">Testes</a> •
  <a href="#como-usar">Como usar</a> •
  <a href="#desafios">Desafios</a> •
  <a href="#melhorias">Melhorias</a> •
 </p>
 
 <h4 align="center">
-	 Status: Em desenvolvimento!
+	 Status: Teste entregue!
 </h4>
 
 ---
@@ -42,6 +43,7 @@
 - [x] Quando o usuário clicar em um produto, abrir um modal exibindo as informações desse produto e opções de adicionar e remover quantidades desse produto, exibir também o valor original e o valor total com base na quantidade de produtos selecionados.
 
 #### Outros
+- [x] Testes unitários nas principais funções do projeto.
 - [x] Adicionado botão de voltar caso o usuário não esteja na Home.
 
 ---
@@ -83,6 +85,15 @@ src/
 
 ---
 
+### Testes
+
+![Terminado com testes](src/assets/readme/terminal-with-tests.png)
+
+##### Execute o comando a seguir para rodar os testes unitários
+```bash
+yarn test
+```
+
 ### Como usar
 #### Pré-requisitos
 
@@ -113,14 +124,15 @@ yarn start
 ---
 
 ### Desafios
-<p> Sem dúvidas o maior desafio foi o tratamento dos horários dos restaurantes e dos valores promocionais, as informações terem de ser atualizadas em tela sem o recarregamento também foi desafiador.</br>
-Para o gerenciamento de estados globais da aplicação utilizei o <a href="https://react-redux.js.org/">Redux</a>, normalmente utilizo a <a href="https://pt-br.reactjs.org/">Context API</a>, mas queria me desafiar e apesar de não ter o domínio da ferramenta a implementação foi bem-sucedida.
+<p> Sem dúvidas a feature mais complexa foi a de tratamento dos horários dos restaurantes e dos valores promocionais, as informações terem de ser atualizadas em tela sem o recarregamento também foi desafiador.</br>
+Para o gerenciamento de estados globais da aplicação utilizei o <a href="https://react-redux.js.org/">Redux</a>, normalmente utilizo a <a href="https://pt-br.reactjs.org/">Context API</a>, mas queria me testar e apesar de não ter o domínio da ferramenta a implementação foi bem-sucedida. Outro ponto foram os testes unitários, até esse projeto eu não tinha tido contato, apesar de não implementar nos componentes consegui nas principais funções.
 </p>
 
 ---
 
 ### Melhorias
-<p>Uma melhoria na aplicação seria a implementação dos testes unitários para evitar erros que não foram previstos durante o desenvolvimento, outro ponto a ser revisto é o tratamento de erros, hoje está sendo feito através do <i>throw new error</i>, poderia ser adicionado um toast ou um alert para notificação ao usuário. Relacionado a performance, poderiamos migrar o projeto de CRA para <a href="https://nextjs.org/">Next.js</a>, com isso ganhariamos desempenho graças as páginas server side rendering e static site generator que a ferramenta oferece, e ainda teriamos um melhor gerenciamento de SEO.</p>
+<p>Uma melhoria na aplicação seria a implementação dos testes unitários nos componentes utilizando <a href="https://jestjs.io/pt-BR/">Jest</a> combinado com <a href="https://testing-library.com/">Testing Library
+</a> para evitar erros que não foram previstos durante o desenvolvimento, outro ponto a ser revisto é o tratamento de erros, hoje está sendo feito através do <i>throw new error</i>, poderia ser adicionado um toast ou um alert para notificação ao usuário. Relacionado a performance, poderiamos migrar o projeto de CRA para <a href="https://nextjs.org/">Next.js</a>, com isso ganhariamos desempenho graças as páginas server side rendering e static site generator que a ferramenta oferece, e ainda teriamos um melhor gerenciamento de SEO.</p>
 
 ---
 

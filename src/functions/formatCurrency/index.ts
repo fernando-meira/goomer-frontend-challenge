@@ -1,6 +1,8 @@
-export const formatCurrency = (value: number) => {
+export function formatCurrency(value: number) {
   return new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
-  }).format(value);
-};
+  })
+    .format(value)
+    .replace(/^(\D+)/g, 'R$ ');
+}
